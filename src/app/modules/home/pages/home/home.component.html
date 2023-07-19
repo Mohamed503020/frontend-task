@@ -1,0 +1,70 @@
+
+
+<div >
+  
+<div class="description  mt-5">
+  <div class="container">
+<h2>Users List</h2>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, veniam? </p>
+  </div>
+</div>
+</div>
+<div class="container mt-5 mb-4">
+  <div class="table-content bg-white rounded p-2 shadow">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Photo</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Send Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <td><img [src]="employee.avatar" alt="Avatar" width="50" class="rounded-circle border-info border-4 border"></td>
+            <td>{{ employee.first_name }}</td>
+            <td>{{ employee.last_name }}</td>
+            <td class=""> <div class="text-primary fw-bold email">{{ employee.email }}</div></td>
+            <td><a href="mailto:{{ employee.email }}" class="btn btnEmail "><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3.67124 20.4L21.1212 12.92C21.9312 12.57 21.9312 11.43 21.1212 11.08L3.67124 3.6C3.01124 3.31 2.28124 3.8 2.28124 4.51L2.27124 9.12C2.27124 9.62 2.64124 10.05 3.14124 10.11L17.2712 12L3.14124 13.88C2.64124 13.95 2.27124 14.38 2.27124 14.88L2.28124 19.49C2.28124 20.2 3.01124 20.69 3.67124 20.4Z" fill="white"/>
+              </svg> <span class="emailText"> Send Email</span></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <p>Showing {{ (currentPage - 1) * perPage + 1 }}-{{ (currentPage - 1) * perPage + employees.length }} of {{ totalItems }} items.</p>
+      </div>
+      <div class="col-sm-6">
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-end">
+            <li class="page-item" [ngClass]="{ disabled: currentPage === 1 }">
+              <a class="" (click)="prevPage()" aria-label="Previous">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <path d="M8 31.5L24 31.5C28.1421 31.5 31.5 28.1421 31.5 24L31.5 8C31.5 3.85786 28.1421 0.5 24 0.5L8 0.5C3.85786 0.5 0.5 3.85786 0.5 8L0.5 24C0.5 28.1421 3.85786 31.5 8 31.5Z" stroke="#E2E2EA" stroke-miterlimit="10"/>
+                  <path d="M14.414 16L18.707 20.293C18.8025 20.3852 18.8787 20.4956 18.9311 20.6176C18.9835 20.7396 19.0111 20.8708 19.0123 21.0036C19.0134 21.1364 18.9881 21.268 18.9378 21.3909C18.8875 21.5138 18.8133 21.6255 18.7194 21.7194C18.6255 21.8133 18.5139 21.8875 18.391 21.9378C18.2681 21.9881 18.1364 22.0134 18.0036 22.0122C17.8708 22.0111 17.7396 21.9835 17.6176 21.9311C17.4956 21.8787 17.3852 21.8025 17.293 21.707L12.293 16.707C12.1055 16.5195 12.0002 16.2651 12.0002 16C12.0002 15.7348 12.1055 15.4805 12.293 15.293L17.293 10.293C17.4816 10.1108 17.7342 10.01 17.9964 10.0123C18.2586 10.0146 18.5094 10.1198 18.6948 10.3052C18.8802 10.4906 18.9854 10.7414 18.9877 11.0036C18.99 11.2658 18.8892 11.5184 18.707 11.707L14.414 16Z" fill="#92929D"/>
+                </svg>
+              </a>
+            </li>
+            <li class="page-item" *ngFor="let page of pages" [ngClass]="{ active: currentPage === page }">
+              <a class="page-link"  (click)="goToPage(page)">{{ page }}</a>
+            </li>
+            <li class="page-item" [ngClass]="{ disabled: currentPage === totalPages }">
+              <a class="" (click)="nextPage()" aria-label="Next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <path d="M8 31.5L24 31.5C28.1421 31.5 31.5 28.1421 31.5 24L31.5 8C31.5 3.85786 28.1421 0.5 24 0.5L8 0.5C3.85786 0.5 0.5 3.85786 0.5 8L0.5 24C0.5 28.1421 3.85786 31.5 8 31.5Z" stroke="#E2E2EA" stroke-miterlimit="10"/>
+                  <path d="M17.586 16L13.293 11.707C13.1109 11.5184 13.0101 11.2658 13.0124 11.0036C13.0146 10.7414 13.1198 10.4905 13.3052 10.3051C13.4906 10.1197 13.7414 10.0146 14.0036 10.0123C14.2658 10.01 14.5184 10.1108 14.707 10.293L19.707 15.293C19.8945 15.4805 19.9998 15.7348 19.9998 16C19.9998 16.2651 19.8945 16.5194 19.707 16.707L14.707 21.707C14.5184 21.8891 14.2658 21.9899 14.0036 21.9876C13.7414 21.9854 13.4906 21.8802 13.3052 21.6948C13.1198 21.5094 13.0146 21.2586 13.0124 20.9964C13.0101 20.7342 13.1109 20.4816 13.293 20.293L17.586 16Z" fill="#92929D"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+

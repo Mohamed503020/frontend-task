@@ -1,0 +1,30 @@
+
+
+th, td {
+  padding: 20px;
+  border: none;
+}
+
+.btnEmail{
+  color:#fff;
+padding: 8px 24px;
+justify-content: center;
+align-items: center;
+gap: 4px;
+background-color: #004A9B;
+}
+@media only screen and (max-width: 800px) {
+  .emailText{
+    display: none;
+  }
+  .btnEmail{
+    display: flex;
+    gap:0;
+    align-items: center;
+    padding: 5px 10px;
+  }
+  td,th{font-size: 14px; }
+  img{width: 30px;}
+  td .email{display: block;width: 60px; word-wrap: break-word;}
+}
+
